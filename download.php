@@ -39,7 +39,7 @@ make_login();
 	curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
 	curl_setopt($ch, CURLOPT_COOKIEFILE, 'cookie.txt');
 	$rez = curl_exec($ch);
-	$id = substr($id, -3);
+	$id = str_ireplace('download.php?torrent=', '', $id);
 	file_put_contents(TORRENT_PATH.'/'.$id.".torrent", $rez);
 	}
 
